@@ -1,0 +1,326 @@
+/* إعدادات الخطوط العامة والتصفير */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: #f7f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* الهيدر وتنسيق الشعار */
+header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 5px solid #ffd700;
+}
+
+.academy-logo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #ffd700;
+    margin-bottom: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+/* القسم الترحيبي */
+.intro {
+    text-align: center;
+    margin-top: 30px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.intro h2 {
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+.video-section h3 {
+    color: #1e3c72;
+    margin: 25px 0 10px 0;
+}
+
+/* تكبير وتعديل مشغل الفيديو */
+.video-container {
+    width: 100%;
+    max-width: 950px; 
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+    border: 3px solid #1e3c72; 
+}
+
+.video-container video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+    background-color: #000;
+}
+
+.audio-container {
+    margin-top: 20px;
+}
+
+.audio-container audio {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* جداول الدورات */
+.courses-tables h2 {
+    text-align: center;
+    color: #1e3c72;
+    margin: 40px 0 20px 0;
+}
+
+.courses-tables h3 {
+    color: #2a5298;
+    background-color: #e0f2fe;
+    padding: 12px;
+    border-right: 5px solid #0284c7;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #1e3c72;
+    color: white;
+    font-size: 16px;
+}
+
+tr:hover {
+    background-color: #f1f5f9;
+}
+
+.btn-table {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #25d366;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-table:hover {
+    background-color: #128c7e;
+}
+
+/* قسم المعرض وتكبير مساحة وعرض الصور */
+.gallery h2 {
+    text-align: center;
+    color: #1e3c72;
+    margin: 40px 0 20px 0;
+}
+
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 30px; 
+    margin-top: 25px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 400px; 
+    object-fit: contain; 
+    background-color: #fff; 
+    border-radius: 12px;
+    border: 2px solid #cbd5e1;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.04); 
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* تكبير وتوسيع استمارة التسجيل للفورم */
+.registration-form {
+    max-width: 950px; 
+    margin: 50px auto;
+    padding: 50px; 
+    background: #fff;
+    border-radius: 15px;
+    border-top: 6px solid #ffd700; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.registration-form h2 {
+    text-align: center;
+    color: #1e3c72;
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 18px; 
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #1e3c72;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 16px; 
+    border: 2px solid #cbd5e1; 
+    border-radius: 8px;
+    font-size: 18px; 
+    background-color: #f8fafc;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #2a5298;
+    background-color: #fff;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 18px; 
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 22px; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(30, 60, 114, 0.3);
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+}
+
+/* الفوتر ومواقع التواصل */
+footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    padding: 50px 0 25px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer h3 {
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.social-btn {
+    padding: 12px 25px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.telegram { background-color: #0088cc; }
+.facebook { background-color: #1877f2; }
+.youtube { background-color: #ff0000; }
+.whatsapp { background-color: #25d366; }
+
+.social-btn:hover {
+    opacity: 0.85;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background: #334155;
+    margin: 25px 0;
+}
+
+.footer-contact {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.copyright {
+    font-size: 13px;
+}
+
+/* الاستجابة للشاشات الصغيرة جداً كالهواتف */
+@media (max-width: 768px) {
+    header h1 { font-size: 1.8rem; }
+    th, td { padding: 10px; font-size: 14px; }
+    .grid-gallery { grid-template-columns: 1fr; }
+    .gallery-img { height: 280px; }
+    .registration-form { padding: 25px; }
+}
+
+

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Route Academy</title>
+
+  <style>
+    /* تصهير المسافات الافتراضية لكل المتصفحات */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      direction: rtl; /* جعل اتجاه الصفحة من اليمين لليسار */
+      background:#f5f5f5;
+    }
+
+    /* قسم الهيدر (الأساسي بتاعك) */
+    .hero{
+      background:#003b82;
+      text-align:center;
+      color:white;
+      padding:80px 20px;
+    }
+
+    .hero img{
+      width:170px;
+      margin-bottom:30px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+      border-radius:15px;
+    }
+
+    .hero h1{
+      font-size:40px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      font-size:15px;
+      color:#dcdcdc;
+    }
+
+    /* قسم من نحن (الأساسي بتاعك) */
+    .about{
+      background: white;
+      text-align:center;
+      padding:80px 25px;
+    }
+
+    .about h2{
+      font-size:35px;
+      color:#004a99;
+      margin-bottom:35px;
+    }
+
+    .about p{
+      font-size:18px;
+      color:#555;
+      line-height:2;
+      max-width:900px;
+      margin:auto;
+      margin-bottom:25px;
+    }
+
+    /* قسم المميزات الـ 3 (الأساسي بتاعك) */
+    .cards-section{
+      padding:80px 25px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background: #003b82; /* توحيد درجة الأزرق مع الهيدر */
+      padding:35px 25px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .emoji{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      font-size:28px;
+      margin-bottom:15px;
+      color: white;
+    }
+
+    .card p{
+      font-size:18px;
+      color: white;
+      line-height:1.8;
+    }
+
+    /* ======================================= */
+    /* التنسيق الخاص بقسم الدبلومات المتاحة (الجديد) */
+    /* ======================================= */
+    .diplomas-section {
+      background: #f5f5f5;
+      padding: 40px 25px 80px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .diplomas-section h2 {
+      font-size: 35px;
+      color: #003b82;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* حاوية القائمة الطولية لتشبه شكل الموبايل الاحترافي */
+    .diplomas-list {
+      width: 100%;
+      max-width: 550px; /* العرض المثالي للبطاقات */
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* المسافة الثابتة بين البطاقات */
+    }
+
+    /* تصميم وعاء البطاقة البيضاء */
+    .diploma-card {
+      background: white;
+      border-radius: 15px; /* حواف دائرية ناعمة للبطاقة */
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* توزيع العناصر على الأطراف بالتساوي */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* ظل خفيف جداً لمنح عمق */
+      border: 1px solid #edf1f7;
+    }
+
+    /* تجميع الأيقونة والنص على اليمين */
+    .diploma-right-side {
+      display: flex;
+      align-items: center;
+      gap: 16px; /* المسافة بين مربع الأيقونة وبداية الكلام */
+    }
+
+    /* مربع الخلفية الرمادي للأيقونة */
+    .diploma-icon-box {
+      width: 46px;
+      height: 46px;
+      background-color: #f0f4f8; /* اللون الرمادي الباهت الصافي */
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    /* علبة النصوص الداخلية ترتيب عمودي */
+    .diploma-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .diploma-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #2d3748;
+      line-height: 1.3;
+    }
+
+    .diploma-subtitle {
+      font-size: 13px;
+      color: #718096; /* لون رمادي خفيف للكلام الفرعي بين القوسين */
+      line-height: 1.3;
+    }
+
+    /* الدائرة الزرقاء المرقومة على اليسار */
+    .diploma-badge {
+      width: 28px;
+      height: 28px;
+      background-color: #003b82; /* نفس لون هوية الأكاديمية */
+      color: white;
+      border-radius: 50%; /* تحويل المربع لدائرة مثالية */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <img src="/IMG_٢٠٢٦٠٥١٤_٢٢٤٩٢٨.png" alt="Route Logo">
+    <h1>Route Academy</h1>
+    <p>أكاديمية رووت للتدريب التقني</p>
+  </section>
+
+  <section class="about">
+    <h2>من نحن</h2>
+    <p>
+      Route Academy هو center تدريب تكنولوجيا المعلومات الرائد في مصر،
+      تأسس عام 2012. نحن متخصصون في تقديم دورات تدريبية عالية الجودة
+      في مجالات البرمجة وتطوير الويب والتطبيقات.
+    </p>
+    <p>
+      لقد حددنا التحديات الفريدة التي قد يواجهها الأشخاص في تعلم تقنية جديدة،
+      وبدأنا جهودًا في توفير استراتيجيات للتغلب عليها.
+      نرحب بمشاركتك في دوراتنا التدريبية واستكشاف عالم Route.
+    </p>
+  </section>
+
+  <section class="cards-section">
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🎓</div>
+        <h3>تدريب متخصص</h3>
+        <p>دورات تدريبية متقدمة مع مدربين ذوي خبرة</p>
+      </div>
+      <div class="card">
+        <div class="emoji">💻</div>
+        <h3>تقنيات حديثة</h3>
+        <p>تعلم أحدث التقنيات والأدوات البرمجية</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🏆</div>
+        <h3>شهادات معتمدة</h3>
+        <p>احصل على شهادات معترف بها في السوق</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="diplomas-section">
+    <h2>الدبلومات المتاحة</h2>
+
+    <div class="diplomas-list">
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">💻</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Full Stack Web Development</span>
+          </div>
+        </div>
+        <div class="diploma-badge">1</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">🌐</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Front-end Web Development</span>
+            <span class="diploma-subtitle">(Angular, React or Vue)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">2</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">⚙️</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Backend Web Development</span>
+            <span class="diploma-subtitle">(Node.js or .Net or PHP)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">3</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">📚</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Programming Fundamentals</span>
+            <span class="diploma-subtitle">(C++, OOP, Data Structure, Algorithms)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">4</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">📱</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Cross Platform Mobile Development</span>
+            <span class="diploma-subtitle">(Flutter)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">5</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">🤖</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Cyber Security</span>
+            <span class="diploma-subtitle">(Ethical Hacking & Penetration Testing)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">6</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">☁️</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Cloud Computing & DevOps</span>
+            <span class="diploma-subtitle">(AWS or Azure)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">7</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">📊</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Data Science & AI</span>
+            <span class="diploma-subtitle">(Python, Machine Learning)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">8</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">🎨</div>
+          <div class="diploma-info">
+            <span class="diploma-title">UI/UX Design</span>
+            <span class="diploma-subtitle">(Figma, Adobe XD)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">9</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">📈</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Data Analysis</span>
+            <span class="diploma-subtitle">(Excel, Power BI, SQL)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">10</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">🧪</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Software Testing</span>
+            <span class="diploma-subtitle">(Manual & Automation)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">11</div>
+      </div>
+
+      <div class="diploma-card">
+        <div class="diploma-right-side">
+          <div class="diploma-icon-box">👾</div>
+          <div class="diploma-info">
+            <span class="diploma-title">Game Development</span>
+            <span class="diploma-subtitle">(Unity or Unreal Engine)</span>
+          </div>
+        </div>
+        <div class="diploma-badge">12</div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
