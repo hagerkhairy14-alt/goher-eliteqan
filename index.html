@@ -4,247 +4,560 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية جوهر الإتقان</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== الهوية اللونية الفخمة والهادئة ===== */
+        :root {
+            --bg-main: #fcfbfa; 
+            --bg-card: #ffffff;
+            --primary: #1c352d; 
+            --gold: #c5a85c;    
+            --gold-light: #f4edd9;
+            --text-main: #2d3732;
+            --text-muted: #626c66;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 35px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '❖';
+            display: block;
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* ===== الهيدر النحيف النقي (بدون أي روابط) ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(252, 251, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(197, 168, 92, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center; /* توسط الشعار والاسم لمنح مظهر متوازن وفخم */
+            align-items: center;
+        }
+
+        .header-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-logo-area img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+        }
+
+        .header-content h1 {
+            color: var(--primary);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* ===== واجهة الهيرو النابضة بالحياة ===== */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(252, 251, 250, 0.85), rgba(244, 237, 217, 0.9)), url('/sheear.png');
+            background-size: cover;
+            background-position: center;
+            padding-top: 90px;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(197, 168, 92, 0.2);
+            transition: transform 0.5s ease;
+        }
+        
+        /* حركة اللوجو الكبير عند اللمس */
+        .hero-logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero-target {
+            font-size: 14px;
+            color: var(--text-muted);
+            background: var(--gold-light);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            border: 1px solid rgba(197, 168, 92, 0.2);
+        }
+
+        /* حيوية وتأثير الأزرار التفاعلية */
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(135deg, var(--primary), #2c4d41);
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 6px 15px rgba(28, 53, 45, 0.15);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .btn:hover, .btn:active {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(28, 53, 45, 0.3);
+            background: linear-gradient(135deg, var(--gold), #b39549);
+            color: var(--primary);
+        }
+
+        /* ===== إضافة الحياة والتفاعل للكروت (مهم جداً) ===== */
+        .cards-grid {
+            display: flex;
+            flex-direction: column; 
+            gap: 25px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 28px;
+            border-radius: 22px;
+            border: 1px solid rgba(197, 168, 92, 0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            width: 100%; 
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* التأثير التفاعلي الحي عند الضغط أو تمرير الماوس على الكرت */
+        .card:hover, .card:active {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 15px 35px rgba(197, 168, 92, 0.18);
+            background: linear-gradient(to bottom, #ffffff, #fffdf9);
+        }
+
+        /* خط ذهبي أنيق ينبثق في أعلى الكرت عند التفاعل */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 0;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+        .card:hover::before, .card:active::before {
+            height: 4px;
+        }
+
+        .card h3 { color: var(--primary); margin-bottom: 12px; font-size: 21px; font-weight: 700; transition: color 0.3s; }
+        .card:hover h3 { color: var(--gold); }
+        .card p { color: var(--text-muted); margin-bottom: 15px; font-size: 14px; }
+        .card ul { margin-right: 18px; margin-bottom: 20px; }
+        .card ul li { margin-bottom: 8px; font-size: 14px; color: var(--text-main); }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 15px;
+        }
+
+        .price {
+            background: var(--gold-light);
+            color: var(--primary);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        .card:hover .price {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .card .btn-sm { padding: 8px 20px; font-size: 13px; border-radius: 50px; }
+
+        /* باقي التنسيقات التفاعلية المريحة */
+        .media-grid { display: flex; flex-direction: column; gap: 20px; }
+        @media (min-width: 768px) { .media-grid { display: grid; grid-template-columns: 1fr 1fr; } }
+        .video-box { background: #fff; padding: 15px; border-radius: 20px; border: 1px solid rgba(197,168,92,0.15); transition: all 0.3s; }
+        .video-box:hover { transform: scale(1.01); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .video-box video { width: 100%; border-radius: 12px; }
+
+        .about { background: var(--gold-light); text-align: center; }
+        .about-text { font-size: 16px; margin-bottom: 30px; }
+        .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+        .stat { background: #fff; padding: 20px 10px; border-radius: 15px; border: 1px solid rgba(197,168,92,0.1); transition: all 0.3s; }
+        .stat:hover { transform: translateY(-3px); border-color: var(--gold); }
+        .stat h3 { font-size: 26px; color: var(--primary); font-weight: 700; }
+        .stat p { font-size: 13px; color: var(--text-muted); }
+
+        .features-grid { display: flex; flex-direction: column; gap: 20px; }
+        @media (min-width: 768px) { .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); } }
+        .feature-card { background: #fff; padding: 25px; border-radius: 20px; text-align: center; border-top: 4px solid var(--gold); transition: all 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        .registration-section { background: var(--primary); color: #fff; padding: 40px 20px; border-radius: 24px; text-align: center; transition: all 0.3s; }
+        .registration-section:hover { box-shadow: 0 15px 40px rgba(28, 53, 45, 0.25); }
+        .registration-section h2 { color: var(--gold); font-size: 24px; margin-bottom: 10px; }
+        .registration-section p { font-size: 14px; margin-bottom: 25px; }
+        .registration-buttons { display: flex; flex-direction: column; gap: 12px; }
+        .registration-buttons .btn { background: var(--gold); color: var(--primary); }
+        .registration-buttons .btn:hover { background: #fff; color: var(--primary); }
+
+        .team-grid { display: flex; flex-direction: column; gap: 20px; }
+        @media (min-width: 768px) { .team-grid { display: grid; grid-template-columns: 1fr 1fr; } }
+        .teacher { background: #fff; padding: 22px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.03); transition: all 0.3s; }
+        .teacher:hover { transform: translateY(-3px); border-color: var(--gold); }
+        .teacher-role { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .teacher-role h3 { color: var(--primary); font-size: 18px; }
+
+        .gallery-grid { display: flex; flex-direction: column; gap: 15px; }
+        @media (min-width: 768px) { .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); } }
+        .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; transition: all 0.3s; }
+        .gallery-grid img:hover { transform: scale(1.03); }
+
+        .reviews-grid { display: flex; flex-direction: column; gap: 15px; }
+        @media (min-width: 768px) { .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); } }
+        .review { background: #fff; padding: 20px; border-radius: 15px; transition: all 0.3s; }
+        .review:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
+
+        .phone-notice { background: rgba(28, 53, 45, 0.05); color: var(--primary); padding: 12px; border-radius: 12px; font-size: 13px; text-align: center; margin-bottom: 20px; font-weight: 600; }
+        footer { background: #11221c; text-align: center; padding: 35px 20px; color: #a4b3ad; font-size: 13px; }
+        .social-links { display: flex; justify-content: center; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
+        .social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
+        .social-icon:hover { background: var(--gold); transform: translateY(-3px); }
+        .whatsapp-btn { position: fixed; bottom: 20px; left: 20px; background: #25D366; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; text-decoration: none; transition: all 0.3s; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
+        .whatsapp-btn:hover { transform: scale(1.1); }
+    </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <div class="logo-area">
-                <!-- لوجو الأكاديمية الرئيسي -->
-                <img src="1776459624315.png" alt="شعار أكاديمية جوهر الإتقان" class="academy-logo">
-                <h1>أكاديمية جوهر الإتقان 👑</h1>
+        <div class="container header-content">
+            <div class="header-logo-area">
+                <img src="/sheear.png" alt="شعار الأكاديمية">
+                <h1>أكاديمية جوهر الإتقان</h1>
             </div>
-            <p class="slogan">نأخذ بيدك من البداية حتى الإتقان</p>
         </div>
     </header>
 
-    <section class="intro container">
-        <h2>مرحباً بكم في الأكاديمية</h2>
-        <p>جميع دوراتنا بإجازات بسند متصل وتحت إشراف نخبة من المعلمين والمعلمات المتميزين.</p>
-        
-        <!-- قسم الفيديو التعريفي للأكاديمية -->
-        <div class="video-section" style="margin-bottom: 25px;">
-            <h3>🎥 الفيديو التعريفي للأكاديمية</h3>
-            <div class="video-container">
-                <video src="intro.mp4" controls width="100%" poster="1776459624315.png"></video>
-            </div>
-        </div>
-
-        <!-- قسم نشيد الأكاديمية الرسمي -->
-        <div class="audio-container" style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee;">
-            <p style="font-weight: bold; margin-top: 0;">🎵 استمع إلى نشيد الأكاديمية (كن متقناً - بدون إيقاع):</p>
-            <video src="nasheed.mp4" controls width="100%" style="max-height: 60px; background: #000; border-radius: 4px;"></video>
-        </div>
-    </section>
-
-    <!-- أولاً: دليل الدورات والمتون والأسعار -->
-    <section class="courses-tables container" style="margin-top: 30px;">
-        <h2>📚 جداول ودورات الأكاديمية الرسمية</h2>
-        
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>الدورة / المتن</th>
-                        <th>المعلم/ة</th>
-                        <th>تفاصيل الدورة</th>
-                        <th>التكلفة والرسوم</th>
-                        <th>الحجز والتسجيل</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>تحفة الأطفال</strong></td>
-                        <td>أ. هاجر خيري</td>
-                        <td>دراسة متن التجويد</td>
-                        <td>مجانية (الإجازة 30 جنيه)</td>
-                        <td><a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-table">احجز عبر البوت</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>المنظومة الإبراهيمية</strong></td>
-                        <td>أ. هاجر خيري</td>
-                        <td>دراسة المتن الشرعي</td>
-                        <td>مجانية (الإجازة 20 جنيه)</td>
-                        <td><a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-table">احجز عبر البوت</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>المقدمة الجزرية</strong></td>
-                        <td>أ. أم تقى الله</td>
-                        <td>دراسة متن الجزرية في التجويد</td>
-                        <td>350 ج (مصر) / 15$ (خارجها)</td>
-                        <td><a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-table">احجز عبر البوت</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>نور البيان</strong></td>
-                        <td>أ. سلوى حمدي</td>
-                        <td>تأسيس القراءة والقرآن</td>
-                        <td>200 جنيه (شاملة الإجازة)</td>
-                        <td><a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-table">احجز عبر البوت</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>سحر البيان</strong></td>
-                        <td>أ. منة الله</td>
-                        <td>كتاب "موسوعة العشرون النحوية"</td>
-                        <td>200 جنيه (شاملة الإجازة)</td>
-                        <td><a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-table">احجز عبر البوت</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>دورة البرمجة</strong></td>
-                        <td>مهندسات الأكاديمية</td>
-                        <td>تعلم البرمجة وتطوير المواقع</td>
-                        <td>الشرح مجاني (المتابعة 200 ج شهرياً)</td>
-                        <td><a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-table">احجز عبر البوت</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- ثانياً: معسكر حاملة القرآن الكريم -->
-    <section class="camps-section container" style="background-color: #fff9f0; padding: 20px; border-radius: 8px; border: 1px solid #ffeacc; margin-top: 30px;">
-        <h2>👑 معسكر حاملة القرآن (حفظ القرآن كاملاً في 3 شهور)</h2>
-        <p>مشروع مكثف ومستقل للحفظ المتقن تحت إشراف نخبة من المعلمات الحافظات والمجازات.</p>
-        
-        <div style="margin: 15px 0;">
-            <strong>✨ طاقم معلمات المعسكر:</strong>
-            <ul style="list-style-type: square; margin-right: 20px; padding: 0;">
-                <li>أ. هاجر خيري</li>
-                <li>أ. رحاب عامر</li>
-                <li>أ. ياسمين عبد الحميد</li>
-                <li>أ. رحمة صديق</li>
-                <li>أ. خديجة مقبل ردمان</li>
-            </ul>
-        </div>
-        
-        <p><strong>💰 تكلفة المعسكر الكامل (3 شهور):</strong> 1500 جنيه مصري فقط.</p>
-        <a href="https://t.me/DailyTajweedBot" target="_blank" class="btn-submit" style="display: inline-block; text-align: center; text-decoration: none; width: auto; padding: 10px 25px;">انضمام لمعسكر حاملة القرآن 🚀</a>
-    </section>
-
-    <!-- ثالثاً ورابعاً وخامساً: Services -->
-    <section class="academy-features container" style="margin-top: 30px;">
-        <h2>🕌 الأقسام والحلقات المستمرة بالأكاديمية</h2>
-        
-        <div class="features-grid" style="display: flex; flex-direction: column; gap: 20px;">
-            
-            <div class="feature-item" style="background: #f4fff4; padding: 15px; border-right: 5px solid #2ecc71; border-radius: 4px;">
-                <h3>🟢 حلقات القرآن الكريم المستمرة (تصحيح التلاوة والحفظ)</h3>
-                <p><strong>التكلفة:</strong> مجانية بالكامل.</p>
-                <p><strong>طاقم المعلمات:</strong> أ. عزة، أ. إرادة جابر، أ. جهاد، أ. نتالي حفار، أ. خديجة مقبل ردمان.</p>
-            </div>
-
-            <div class="feature-item" style="background: #fbf5ff; padding: 15px; border-right: 5px solid #9b59b6; border-radius: 4px;">
-                <h3>📜 قسم الإجازات المعتمدة (القرآن والكتب الشرعية)</h3>
-                <p>خانة خاصة لطلب الإجازات والشهادات المعتمدة من المعلمات المخولات بالمنح والسند المتصل.</p>
-                <p><strong>التكلفة:</strong> تتراوح بين 500 إلى 1000 جنيه (حسب نوع الإجازة).</p>
-                <p><strong>مانحات إجازات القرآن:</strong> أ. إرادة جابر | <strong>مانحات إجازات الكتب الشرعية:</strong> أ. أم تقى الله / أ. هاجر خيري.</p>
-            </div>
-
-            <div class="feature-item" style="background: #fffdf5; padding: 15px; border-right: 5px solid #f1c40f; border-radius: 4px;">
-                <h3>📚 أقسام العلوم الشرعية والحديث والدروس العامة</h3>
-                <p><strong>المواد والدروس المتوفرة:</strong></p>
-                <ul style="margin-right: 20px;">
-                    <li><strong>السيرة النبوية:</strong> أ. آية / أ. نتالي حفار</li>
-                    <li><strong>الحديث الشريف:</strong> أ. مارو / أ. نتالي حفار</li>
-                    <li><strong>التوحيد والفقه:</strong> أ. نتالي حفار</li>
-                    <li><strong>المحاضرات العامة والدروس المتفرقة:</strong> أ. منى (أم أميرة)، أ. ندى محمد</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- معرض الصور -->
-    <section class="gallery container" style="margin-top: 30px;">
-        <h2>📸 معرض صور وفعاليات الأكاديمية</h2>
-        <div class="grid-gallery" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <div class="photo-item" style="max-width: 300px; border: 1px solid #ddd; padding: 5px; border-radius: 6px;">
-                <p style="text-align: center; margin: 5px 0; font-size: 14px; font-weight: bold;">لوجو دورة هجيرة</p>
-                <img src="file_0000000026c471f4b24076ea4651ed63.png" alt="لوجو دورة هجيرة" class="gallery-img" style="width: 100%; height: auto;">
-            </div>
-            <div class="photo-item" style="max-width: 300px; border: 1px solid #ddd; padding: 5px; border-radius: 6px;">
-                <p style="text-align: center; margin: 5px 0; font-size: 14px; font-weight: bold;">لوجو الحلقات</p>
-                <img src="1776463330630.png" alt="لوجو حلقات القرآن الكريم" class="gallery-img" style="width: 100%; height: auto;">
+    <section class="hero">
+        <div class="hero-content">
+            <img src="/sheear.png" class="hero-logo" alt="شعار الأكاديمية">
+            <h1>أكاديمية جوهر الإتقان</h1>
+            <p>إتقان الجوهر... سمو بالمظهر</p>
+            <div class="hero-target">✨ للنساء، الفتيات، والأشبال حتى سن 14 عاماً ✨</div>
+            <div>
+                <a href="#register" class="btn">الانضمام للمعسكرات الصيفية</a>
             </div>
         </div>
     </section>
 
-    <!-- قسم استمارة التسجيل الموجهة للبوت -->
-    <section class="registration-form container" style="margin-top: 30px;">
-        <h2>📝 خطوات الاشتراك في الدورات والمعسكرات</h2>
-        
-        <div class="registration-notice" style="background-color: #f0f7ff; border-right: 5px solid #0088cc; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
-            <p style="margin: 0; font-weight: bold; color: #005580;">⚠️ خطوة هامة وقبل التسجيل:</p>
-            <p style="margin: 5px 0 0 0;">يجب أولاً الانضمام إلى قناة التليجرام الرسمية للأكاديمية لمتابعة الإعلانات والجداول: 
-                <a href="https://t.me/jaoharoaletqan" target="_blank" style="color: #0088cc; font-weight: bold; text-decoration: underline;">اضغط هنا للانضمام للقناة</a>
+    <section style="background: #fff;">
+        <div class="container">
+            <div class="media-grid">
+                <div class="video-box">
+                    <h3><i class="fa-solid fa-play"></i> الفيديو التعريفي الرسمي</h3>
+                    <video controls><source src="/tareef.mp4" type="video/mp4"></video>
+                </div>
+                <div class="video-box">
+                    <h3><i class="fa-solid fa-music"></i> نشيد الأكاديمية العذب</h3>
+                    <video controls><source src="/nasheed.mp4" type="video/mp4"></video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">🏛 من نحن؟</h2>
+            <p class="about-text">
+                منصة تعليمية قرآنيّة رائدة متخصصة في تجويد وحفظ كتاب الله والعلوم الشرعية والدورات المهارية. تسعى الأكاديمية لصناعة الأثر وبناء عقول متقنة واعية شرعياً وتقنياً بأساليب تفاعلية حديثة تحت إشراف نخبة من المعلمات المجازات.
             </p>
+            <div class="stats">
+                <div class="stat"><i class="fa-solid fa-award"></i><h3>6000+</h3><p>خريجة في تحفة الأطفال</p></div>
+                <div class="stat"><i class="fa-solid fa-graduation-cap"></i><h3>+1000</h3><p>طالبة حالية</p></div>
+                <div class="stat"><i class="fa-solid fa-book-open"></i><h3>+20</h3><p>برنامجاً تعليمياً</p></div>
+                <div class="stat"><i class="fa-solid fa-chalkboard-user"></i><h3>+15</h3><p>معلمة مجازة بالسند</p></div>
+            </div>
         </div>
+    </section>
 
-        <p style="margin-bottom: 15px; color: #555;">يرجى ملء البيانات بالأسفل، ثم الضغط على زر الإرسال لتوجهك الاستمارة مباشرة لتأكيد الحجز وتثبيت الاسم عبر البوت الموحد للأكاديمية:</p>
+    <section style="background: #fff;">
+        <div class="container">
+            <h2 class="section-title">✨ لماذا تختارين أكاديميتنا؟</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>نجاح ومصداقية واقعية</h3>
+                    <p>أثرنا يتحدث عنا؛ حيث تفخر الأكاديمية بتخريج وإجازة أكثر من 6000 طالبة أتقنّ أحكام التجويد بالكامل عبر متن تحفة الأطفال.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>متابعة وتسميع يومي</h3>
+                    <p>نعتمد على بيئة تفاعلية حية تشمل ميزة التسميع اليومي مع الرفيق لضمان رسوخ الحفظ وعدم التكاسل.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>خصوصية تامة وبيئة آمنة</h3>
+                    <p>بيئة إيمانية مخصصة بالكامل لراحة الفتيات والنساء، بالإضافة إلى فصول تربوية مستقلة ومحببة للأولاد الصغار.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <form action="https://t.me/DailyTajweedBot" method="GET" target="_blank">
-            <div class="form-group">
-                <label for="name">الاسم الكامل:</label>
-                <input type="text" id="name" name="name" required placeholder="أدخل اسمك الثلاثي">
+    <section id="register" style="padding: 40px 0;">
+        <div class="container">
+            <div class="registration-section">
+                <h2>📢 ابدئي رحلة الإتقان والتميز معنا</h2>
+                <p>اضغطي على أحد الخيارات التالية لحجز مقعدكِ في معسكراتنا الصيفية فوراً</p>
+                <div class="registration-buttons">
+                    <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn"><i class="fa-solid fa-file-signature"></i> استمارة القبول عبر جوجل</a>
+                    <a href="https://t.me/DailyTajweedBot" target="_blank" class="btn"><i class="fa-solid fa-robot"></i> التسجيل التلقائي عبر البوت</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="camps">
+        <div class="container">
+            <h2 class="section-title">👑 البرامج الشرعية والمعسكرات الصيفية</h2>
+            <div class="cards-grid" style="margin-bottom: 50px;">
+                
+                <div class="card">
+                    <h3>معسكر الجوهرات</h3>
+                    <p>بناء وتربية قرآنية متكاملة بأسعار رمزية ومناسبة للجميع:</p>
+                    <ul>
+                        <li><strong>حلقتان مباشر</strong> أسبوعياً للقاء المعلمة والشرح.</li>
+                        <li><strong>تسميع يومي</strong> مستمر مع الرفيق للتثبيت الدوري.</li>
+                        <li><strong>حلقة أصول دين</strong> متنوعة ومتجددة في كل مرة لتعزيز الوعي.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="price">80 جنيه شهرياً</span>
+                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>معسكر حاملة القرآن</h3>
+                    <p>برنامج مكثف للراغبات في حيازة شرف حفظ كتاب الله كاملاً:</p>
+                    <ul>
+                        <li>خطة حفظ محكمة وممنهجة تكتمل في <strong>4 أشهر</strong> فقط.</li>
+                        <li>متابعة دقيقة وتسميع دوري صارم لضمان عدم النسيان.</li>
+                        <li>تحت إشراف مباشر من معلمات مجازات وبمجموعات تحفيزية.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="price">1500 جنيه</span>
+                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>معسكر المتون الشرعية</h3>
+                    <p>مدارسة علمية متقنة لأهم المتون التجويدية مع توفير إجازات معتمدة بسند متصل:</p>
+                    <ul>
+                        <li><strong>متن تحفة الأطفال:</strong> الشرح مجاني (الاختبار والإجازة 30 ج).</li>
+                        <li><strong>المنظومة الإبراهيمية:</strong> الشرح مجاني (الاختبار والإجازة 20 ج).</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="price">الدراسة مجانية</span>
+                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>معسكر السير والعلوم الشرعية</h3>
+                    <p>سلاسل إيمانية وثقافية تهدف لتعزيز الثقافة الإسلامية وتزكية الأخلاق:</p>
+                    <ul>
+                        <li><strong>سلسلة أكثر أهل النار:</strong> وقفات تربوية هامة مع أ. أم أميرة.</li>
+                        <li><strong>الأربعون النووية:</strong> مدارسة أحاديث المصطفى ﷺ وتطبيقاتها.</li>
+                        <li><strong>أمهات المؤمنين:</strong> الإبحار في السير العطرة لزوجات النبي ﷺ.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="price">مجاني بالكامل</span>
+                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>معسكر سحر البيان (النحو)</h3>
+                    <p>تأسيس متين ومبسط لقواعد لغة الضاد من البداية لتمكين لسان الطالب وصون قراءة القرآن الكريم.</p>
+                    <div class="card-footer">
+                        <span class="price">200 جنيه</span>
+                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🏅 برنامج الإجازات المعتمدة</h3>
+                    <p>منح الإجازات المعتمدة بالسند المتصل إلى رسول الله ﷺ في القرآن الكريم والقراءات والمتون التجويدية.</p>
+                    <div class="card-footer">
+                        <span class="price">من 500 إلى 1000 ج</span>
+                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="phone">رقم الواتساب الحالي:</label>
-                <input type="tel" id="phone" name="phone" required placeholder="مثال: 2010XXXXXXXX">
+            <h2 class="section-title">💻 المعسكرات المهارية والتقنية</h2>
+            <div class="phone-notice">
+                <i class="fa-solid fa-mobile-screen-button"></i> 📱 جميع المعسكرات المهارية مصممة للتطبيق عبر الهاتف المحمول بالكامل.
             </div>
-
-            <div class="form-group">
-                <label for="country">بلد الإقامة:</label>
-                <input type="text" id="country" name="country" required placeholder="مصر، السعودية، إلخ...">
+            <div class="cards-grid">
+                <div class="card"><h3>معسكر المونتاج بالهاتف</h3><p>تعلم فنون قص وتعديل الفيديوهات الرقمية وتركيب الصوت والمؤثرات باحترافية من خلال الجوال.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
+                <div class="card"><h3>معسكر الذكاء الاصطناعي</h3><p>توظيف أدوات الـ AI الحديثة وتطبيقاتها في البحث العلمي وصناعة المحتوى المرئي والتعليمي بسهولة.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
+                <div class="card"><h3>معسكر التفريغ النصي</h3><p>احتراف تحويل الخطب والمقاطع الصوتية إلى ملفات نصية منسقة بدقة والبدء في سوق العمل الحر.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
+                <div class="card"><h3>معسكر صناعة المحتوى</h3><p>آليات التخطيط والكتابة لبناء محتوى قيمي هادف وجذاب، وإدارته ونشره على منصات التواصل بذكاء.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
             </div>
+        </div>
+    </section>
 
-            <div class="form-group">
-                <label for="course">اختر الدورة أو القسم الذي ترغب بالالتحاق بها:</label>
-                <select id="course" name="course" required>
-                    <option value="" disabled selected>-- اختر الدورة أو المعسكر --</option>
-                    <option value="toufa">دورة تحفة الأطفال - أ. هاجر خيري</option>
-                    <option value="ibrahimia">دورة المنظومة الإبراهيمية - أ. هاجر خيري</option>
-                    <option value="jazaria">دورة المقدمة الجزرية - أ. أم تقى الله</option>
-                    <option value="nour-bayan">دورة نور البيان - أ. سلوى حمدي</option>
-                    <option value="sehr-bayan">دورة سحر البيان (النحو) - أ. منة الله</option>
-                    <option value="programming">دورة البرمجة وتطوير المواقع</option>
-                    <option value="quran-camp">معسكر حاملة القرآن (حفظ 3 شهور)</option>
-                    <option value="free-quran">حلقات القرآن الكريم المستمرة (مجاناً)</option>
-                    <option value="ejaza">طلب إجازة معتمدة (قرآن / كتب شرعية)</option>
-                    <option value="sharia-lessons">الدروس والعلوم الشرعية العامة</option>
-                </select>
+    <section style="background: var(--gold-light);">
+        <div class="container">
+            <h2 class="section-title">👩‍🏫 كادر الإشراف والتعليم</h2>
+            <div class="team-grid">
+                <div class="teacher">
+                    <div class="teacher-role"><i class="fa-solid fa-crown"></i><h3>الإدارة والمؤسس</h3></div>
+                    <p><strong>أ. هاجر خيري</strong><br>(مديرة الأكاديمية والمشرفة العامة على المنصة)</p>
+                </div>
+                <div class="teacher">
+                    <div class="teacher-role"><i class="fa-solid fa-book-quran"></i><h3>قرآن كريم وتلاوة</h3></div>
+                    <p>أ. هاجر محمد • أ. هنية إسماعيل • أ. هنا إسلام • أ. رحاب عامر • أ. ياسمين عبد الحميد • أ. رحمة صديق • أ. خديجة مقبل ردمان • أ. نتالي حفار</p>
+                </div>
+                <div class="teacher">
+                    <div class="teacher-role"><i class="fa-solid fa-book"></i><h3>المتون والعلوم الشرعية</h3></div>
+                    <p><strong>أ. هاجر خيري</strong> (تحفة الأطفال / الإبراهيمية)<br><strong>أ. منة الله صابر</strong> (النحو / السيرة)<br><strong>أ. ندى محمد</strong> (الأربعون النووية)<br><strong>أ. منى أم أميرة</strong> (سلسلة أكثر أهل النار / التدبر)</p>
+                </div>
+                <div class="teacher">
+                    <div class="teacher-role"><i class="fa-solid fa-handshake-angle"></i><h3>الدعم والإدارة والتقنية</h3></div>
+                    <p>مآب محمد • رحاب عامر (مساعدة إدارية) • بالتعاون مع فريق الدعم والتدقيق التقني بالأكاديمية.</p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="form-group">
-                <label for="notes">ملاحظات أو استفسارات إضافية للإدارة:</label>
-                <textarea id="notes" name="notes" rows="4" placeholder="اكتب هنا أي شيء تريد إخبارنا به..."></textarea>
+    <section style="background: #fff;">
+        <div class="container">
+            <h2 class="section-title">📸 معرض الأكاديمية الفني</h2>
+            <div class="gallery-grid">
+                <img src="/halalah.png" alt="شعار الحلقات">
+                <img src="/teacher.png" alt="كادر التدريس">
+                <img src="/sheear.png" alt="الشعار الرئيسي الفخم">
             </div>
+        </div>
+    </section>
 
-            <button type="submit" class="btn-submit">إرسال البيانات والتسجيل عبر البوت الموحد 🚀</button>
-        </form>
+    <section>
+        <div class="container">
+            <h2 class="section-title">⭐ كلمات من قلوب طالباتنا</h2>
+            <div class="reviews-grid">
+                <div class="review"><h3>أم عبد الله</h3><p>الأكاديمية بيئة مباركة وممتازة، والتدريس يتم برفق وأسلوب ميسر جزاكم الله عنا خيراً.</p></div>
+                <div class="review"><h3>فاطمة أحمد</h3><p>معسكرات الأكاديمية الصيفية ممتعة والتنظيم مريح والمتابعة اليومية أبقتني ملتزمة دائماً.</p></div>
+                <div class="review"><h3>مريم خالد</h3><p>شرح المتون واضح ودقيق جداً والمتابعة ممتازة من المعلمات، أنصح كل أخت بالانضمام فوراً.</p></div>
+            </div>
+        </div>
     </section>
 
     <footer>
         <div class="container">
-            <h3>تابعونا على منصاتنا الرسمية 🦋</h3>
-            <div class="social-links" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                <a href="https://t.me/jaoharoaletqan" target="_blank" class="social-btn telegram">قناة التليجرام</a>
-                <a href="https://www.facebook.com/share/1DRd5P4RkN/" target="_blank" class="social-btn facebook">صفحة الفيسبوك</a>
-                <a href="https://youtube.com/channel/UCvc7zx4xWksuyzPKJqUx25w?si=0wSrqYZo-ciBaQLL" target="_blank" class="social-btn youtube">قناة اليوتيوب</a>
-                <a href="https://whatsapp.com/channel/0029Vb83shEDOQIeLFzWgD01" target="_blank" class="social-btn whatsapp">قناة الواتساب</a>
-                <a href="https://www.instagram.com/hager832014?igsh=ZzMzMGJic2dxbDhq" target="_blank" class="social-btn instagram" style="background-color: #E1306C; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none;">إنستغرام</a>
-                <a href="https://tiktok.com/@user3035176127599" target="_blank" class="social-btn tiktok" style="background-color: #000000; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none;">تيك توك</a>
+            <div class="social-links">
+                <a href="https://wa.me/201040478991" target="_blank" class="social-icon" title="واتساب الإدارة"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://whatsapp.com/channel/0029Vb83shEDOQIeLFzWgD01" target="_blank" class="social-icon" title="قناة الواتساب"><i class="fa-solid fa-bullhorn"></i></a>
+                <a href="https://t.me/jaoharoaletqan" target="_blank" class="social-icon" title="قناة التليجرام"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://t.me/DailyTajweedBot" target="_blank" class="social-icon" title="بوت التسجيل الالي"><i class="fa-solid fa-robot"></i></a>
+                <a href="https://www.facebook.com/share/1BGhfkTsYA/" target="_blank" class="social-icon" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://youtube.com/channel/UCvc7zx4xWksuyzPKJqUx25w?si=5NoCO9tVimsILC9n" target="_blank" class="social-icon" title="يوتيوب"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/hager832014?igsh=ZzMzMGJic2dxbDhq" target="_blank" class="social-icon" title="انستغرام"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@user3035176127599?_r=1&_t=ZS-97GzWcgeNhi" target="_blank" class="social-icon" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
             </div>
-            
-            <hr class="footer-divider">
-            
-            <p class="footer-contact">للتواصل المباشر والاستفسارات عبر الواتساب: <a href="https://wa.me/201040478991" target="_blank" style="color: #ffd700; font-weight: bold;">+201040478991</a></p>
-            <p class="copyright">&copy; 2026 جميع الحقوق محفوظة لأكاديمية جوهر الإتقان 2026.</p>
+            <p>&copy; 2026 أكاديمية جوهر الإتقان. جميع الحقوق محفوظة لبيئة العلم والهدى.</p>
         </div>
     </footer>
 
+    <a href="https://wa.me/201040478991" class="whatsapp-btn" target="_blank" title="تواصل مباشر عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
 </body>
 </html>
-
-
-
