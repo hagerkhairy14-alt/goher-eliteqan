@@ -1,563 +1,532 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية جوهر الإتقان</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>👑 المنصة الرسمية لأكاديمية جوهر الإتقان</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-dark: #081225;
+      --primary: #0F254B;
+      --primary-light: #1D3E75;
+      --gold: #D4AF37;
+      --gold-bright: #FFD700;
+      --gold-gradient: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #AA771C 100%);
+      --bg-light: #F4F7FA;
+      --white: #FFFFFF;
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-hover: 0 20px 40px rgba(212, 175, 55, 0.25);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    
+    /* تصغير حجم المشغل وضبطه داخل الكارت */
+.nasheed-player {
+  width: 100%;
+  max-width: 320px; /* تحديد أقصى عرض للفيديو */
+  height: 55px; /* تصغير الارتفاع ليصبح شريط صوت أنيق */
+  border-radius: 12px;
+  outline: none;
+  background: #000;
+  display: block;
+  margin: 10px auto 0; /* توسط الفيديو داخل الكارت */
+}
 
-    <style>
-        /* ===== الهوية اللونية الفخمة والهادئة ===== */
-        :root {
-            --bg-main: #fcfbfa; 
-            --bg-card: #ffffff;
-            --primary: #1c352d; 
-            --gold: #c5a85c;    
-            --gold-light: #f4edd9;
-            --text-main: #2d3732;
-            --text-muted: #626c66;
-        }
+/* لضمان احتواء الكارت للفيديو وعدم خروجه */
+.nasheed-box {
+  width: 90%;
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-        }
 
-        body {
-            background: var(--bg-main);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.8;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
+    body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; overflow-x: hidden; }
 
-        .container {
-            width: 100%;
-            max-width: 1140px;
-            margin: auto;
-            padding: 0 20px;
-        }
+    .container { width: 90%; max-width: 1250px; margin: auto; }
+    h1, h2, h3, h4 { font-family: 'Cairo', sans-serif; }
 
-        section {
-            padding: 60px 0;
-        }
+    /* Header & Dynamic Logo */
+    header {
+      background: rgba(8, 18, 37, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+    
+    .brand-logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+    .logo-gem {
+      width: 50px; height: 50px;
+      background: var(--gold-gradient);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: var(--primary-dark);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      transform: rotate(45deg);
+      transition: var(--transition);
+    }
+    .logo-gem i { transform: rotate(-45deg); }
+    .brand-logo-container:hover .logo-gem { transform: rotate(225deg) scale(1.1); }
+    
+    .logo-text h2 { color: var(--white); font-size: 1.3rem; font-weight: 900; letter-spacing: -0.5px; }
+    .logo-text span { color: var(--gold-bright); font-family: 'Amiri', serif; font-size: 0.9rem; display: block; margin-top: -3px; }
 
-        .section-title {
-            text-align: center;
-            font-size: 28px;
-            color: var(--primary);
-            margin-bottom: 35px;
-            font-weight: 700;
-        }
+    .nav-menu { display: flex; gap: 20px; list-style: none; }
+    .nav-menu a { color: var(--white); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition); position: relative; }
+    .nav-menu a::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 0; height: 2px; background: var(--gold); transition: var(--transition); }
+    .nav-menu a:hover::after { width: 100%; }
+    .nav-menu a:hover { color: var(--gold-bright); }
 
-        .section-title::after {
-            content: '❖';
-            display: block;
-            color: var(--gold);
-            font-size: 16px;
-            margin-top: 5px;
-        }
+    .est-tag { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-bright); padding: 5px 15px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; }
 
-        /* ===== الهيدر النحيف النقي (بدون أي روابط) ===== */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(252, 251, 250, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(197, 168, 92, 0.2);
-        }
+    /* News Ticker */
+    .news-ticker { background: var(--gold-gradient); color: var(--primary-dark); padding: 10px 0; font-weight: 800; font-size: 0.95rem; overflow: hidden; display: flex; }
+    .ticker-title { background: var(--primary-dark); color: var(--gold-bright); padding: 0 20px; z-index: 10; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; white-space: nowrap; }
+    .ticker-content { display: flex; gap: 50px; animation: ticker 25s linear infinite; white-space: nowrap; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        .header-content {
-            display: flex;
-            justify-content: center; /* توسط الشعار والاسم لمنح مظهر متوازن وفخم */
-            align-items: center;
-        }
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at center, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 90px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid var(--gold);
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/islamic-art.png'); opacity: 0.1;
+    }
+    .hero-slogan {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.1);
+      border: 1.5px solid var(--gold);
+      color: var(--gold-bright);
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    .hero h1 { font-size: 3.2rem; font-weight: 900; margin-bottom: 20px; line-height: 1.3; }
+    
+    .pure-env-card {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(239, 68, 68, 0.15); border: 1px solid #EF4444; color: #FCA5A5;
+      padding: 10px 25px; border-radius: 50px; font-weight: 800; font-size: 1rem; margin-top: 20px;
+    }
 
-        .header-logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    /* Focus Hover Grid */
+    .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .focus-grid:hover .focus-item { opacity: 0.55; transform: scale(0.96); filter: blur(0.5px); }
+    .focus-grid .focus-item:hover {
+      opacity: 1 !important;
+      transform: scale(1.06) translateY(-10px) !important;
+      filter: blur(0) !important;
+      z-index: 100;
+      box-shadow: var(--shadow-hover);
+      border-color: var(--gold-bright);
+    }
 
-        .header-logo-area img {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1px solid var(--gold);
-        }
+    .focus-item {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+      border: 2px solid transparent;
+      transition: var(--transition);
+      position: relative;
+    }
 
-        .header-content h1 {
-            color: var(--primary);
-            font-size: 16px;
-            font-weight: 700;
-        }
+    /* Titles */
+    .sec-padding { padding: 80px 0; }
+    .sec-title-box { text-align: center; margin-bottom: 50px; }
+    .sec-title-box h2 { font-size: 2.5rem; color: var(--primary-dark); font-weight: 900; }
+    .sec-title-box p { color: var(--text-muted); font-size: 1.1rem; margin-top: 8px; }
+    .gold-divider { width: 80px; height: 4px; background: var(--gold-gradient); margin: 15px auto 0; border-radius: 2px; }
 
-        /* ===== واجهة الهيرو النابضة بالحياة ===== */
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(252, 251, 250, 0.85), rgba(244, 237, 217, 0.9)), url('/sheear.png');
-            background-size: cover;
-            background-position: center;
-            padding-top: 90px;
-        }
+    /* Team Cards */
+    .team-card { text-align: center; border-top: 5px solid var(--primary); }
+    .team-avatar-box {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--gold-bright);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 0 auto 20px;
+      box-shadow: 0 8px 20px rgba(15, 37, 75, 0.2);
+    }
+    .team-card h3 { font-size: 1.3rem; color: var(--primary-dark); font-weight: 800; margin-bottom: 5px; }
+    .team-card .role { color: var(--gold); font-weight: 800; font-size: 0.95rem; }
 
-        .hero-content {
-            width: 100%;
-            max-width: 600px;
-        }
+    /* Course Cards */
+    .course-card { border-top: 5px solid var(--gold); }
+    .course-badge {
+      position: absolute; top: 15px; left: 15px;
+      background: #10B981; color: var(--white);
+      font-size: 0.75rem; font-weight: 900; padding: 4px 12px; border-radius: 30px;
+    }
+    .course-card h3 { font-size: 1.35rem; color: var(--primary-dark); font-weight: 800; margin-bottom: 12px; }
+    .course-details { list-style: none; margin-top: 15px; border-top: 1px dashed #E2E8F0; padding-top: 15px; }
+    .course-details li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .course-details li i { color: var(--gold); }
 
-        .hero-logo {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 20px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            background: #fff;
-            box-shadow: 0 10px 25px rgba(197, 168, 92, 0.2);
-            transition: transform 0.5s ease;
-        }
-        
-        /* حركة اللوجو الكبير عند اللمس */
-        .hero-logo:hover {
-            transform: scale(1.05) rotate(5deg);
-        }
+    /* Social Platforms Cards */
+    .social-card {
+      text-align: center;
+      text-decoration: none;
+      color: var(--text-dark);
+      display: block;
+      border-top: 5px solid var(--gold);
+    }
+    .social-icon-box {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 0 auto 15px; color: var(--white);
+    }
+    .facebook-bg { background: #1877F2; }
+    .telegram-bg { background: #229ED9; }
+    .whatsapp-bg { background: #25D366; }
+    .youtube-bg { background: #FF0000; }
 
-        .hero h1 {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
+    /* Volunteer Buttons & Badges */
+    .btn-action {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 14px 20px; margin-top: 15px;
+      background: var(--gold-gradient); color: var(--primary-dark);
+      font-weight: 800; font-size: 1rem; text-decoration: none;
+      border-radius: 12px; border: none; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); transition: var(--transition);
+    }
+    .btn-action:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5); }
+    .btn-primary-dark { background: var(--primary); color: var(--white); }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
+    /* Footer */
+    footer { background: var(--primary-dark); color: var(--white); text-align: center; padding: 40px 0; border-top: 4px solid var(--gold); margin-top: 60px; }
 
-        .hero-target {
-            font-size: 14px;
-            color: var(--text-muted);
-            background: var(--gold-light);
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            font-weight: 600;
-            border: 1px solid rgba(197, 168, 92, 0.2);
-        }
-
-        /* حيوية وتأثير الأزرار التفاعلية */
-        .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            background: linear-gradient(135deg, var(--primary), #2c4d41);
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            box-shadow: 0 6px 15px rgba(28, 53, 45, 0.15);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .btn:hover, .btn:active {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(28, 53, 45, 0.3);
-            background: linear-gradient(135deg, var(--gold), #b39549);
-            color: var(--primary);
-        }
-
-        /* ===== إضافة الحياة والتفاعل للكروت (مهم جداً) ===== */
-        .cards-grid {
-            display: flex;
-            flex-direction: column; 
-            gap: 25px;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .cards-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            }
-        }
-
-        .card {
-            background: var(--bg-card);
-            padding: 28px;
-            border-radius: 22px;
-            border: 1px solid rgba(197, 168, 92, 0.2);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-            width: 100%; 
-            box-sizing: border-box;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* التأثير التفاعلي الحي عند الضغط أو تمرير الماوس على الكرت */
-        .card:hover, .card:active {
-            transform: translateY(-8px) scale(1.02);
-            border-color: var(--gold);
-            box-shadow: 0 15px 35px rgba(197, 168, 92, 0.18);
-            background: linear-gradient(to bottom, #ffffff, #fffdf9);
-        }
-
-        /* خط ذهبي أنيق ينبثق في أعلى الكرت عند التفاعل */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 0;
-            background: var(--gold);
-            transition: all 0.3s ease;
-        }
-        .card:hover::before, .card:active::before {
-            height: 4px;
-        }
-
-        .card h3 { color: var(--primary); margin-bottom: 12px; font-size: 21px; font-weight: 700; transition: color 0.3s; }
-        .card:hover h3 { color: var(--gold); }
-        .card p { color: var(--text-muted); margin-bottom: 15px; font-size: 14px; }
-        .card ul { margin-right: 18px; margin-bottom: 20px; }
-        .card ul li { margin-bottom: 8px; font-size: 14px; color: var(--text-main); }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 15px;
-        }
-
-        .price {
-            background: var(--gold-light);
-            color: var(--primary);
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 13px;
-            transition: all 0.3s;
-        }
-        .card:hover .price {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .card .btn-sm { padding: 8px 20px; font-size: 13px; border-radius: 50px; }
-
-        /* باقي التنسيقات التفاعلية المريحة */
-        .media-grid { display: flex; flex-direction: column; gap: 20px; }
-        @media (min-width: 768px) { .media-grid { display: grid; grid-template-columns: 1fr 1fr; } }
-        .video-box { background: #fff; padding: 15px; border-radius: 20px; border: 1px solid rgba(197,168,92,0.15); transition: all 0.3s; }
-        .video-box:hover { transform: scale(1.01); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .video-box video { width: 100%; border-radius: 12px; }
-
-        .about { background: var(--gold-light); text-align: center; }
-        .about-text { font-size: 16px; margin-bottom: 30px; }
-        .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, 1fr); } }
-        .stat { background: #fff; padding: 20px 10px; border-radius: 15px; border: 1px solid rgba(197,168,92,0.1); transition: all 0.3s; }
-        .stat:hover { transform: translateY(-3px); border-color: var(--gold); }
-        .stat h3 { font-size: 26px; color: var(--primary); font-weight: 700; }
-        .stat p { font-size: 13px; color: var(--text-muted); }
-
-        .features-grid { display: flex; flex-direction: column; gap: 20px; }
-        @media (min-width: 768px) { .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); } }
-        .feature-card { background: #fff; padding: 25px; border-radius: 20px; text-align: center; border-top: 4px solid var(--gold); transition: all 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        .registration-section { background: var(--primary); color: #fff; padding: 40px 20px; border-radius: 24px; text-align: center; transition: all 0.3s; }
-        .registration-section:hover { box-shadow: 0 15px 40px rgba(28, 53, 45, 0.25); }
-        .registration-section h2 { color: var(--gold); font-size: 24px; margin-bottom: 10px; }
-        .registration-section p { font-size: 14px; margin-bottom: 25px; }
-        .registration-buttons { display: flex; flex-direction: column; gap: 12px; }
-        .registration-buttons .btn { background: var(--gold); color: var(--primary); }
-        .registration-buttons .btn:hover { background: #fff; color: var(--primary); }
-
-        .team-grid { display: flex; flex-direction: column; gap: 20px; }
-        @media (min-width: 768px) { .team-grid { display: grid; grid-template-columns: 1fr 1fr; } }
-        .teacher { background: #fff; padding: 22px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.03); transition: all 0.3s; }
-        .teacher:hover { transform: translateY(-3px); border-color: var(--gold); }
-        .teacher-role { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .teacher-role h3 { color: var(--primary); font-size: 18px; }
-
-        .gallery-grid { display: flex; flex-direction: column; gap: 15px; }
-        @media (min-width: 768px) { .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); } }
-        .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; transition: all 0.3s; }
-        .gallery-grid img:hover { transform: scale(1.03); }
-
-        .reviews-grid { display: flex; flex-direction: column; gap: 15px; }
-        @media (min-width: 768px) { .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); } }
-        .review { background: #fff; padding: 20px; border-radius: 15px; transition: all 0.3s; }
-        .review:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
-
-        .phone-notice { background: rgba(28, 53, 45, 0.05); color: var(--primary); padding: 12px; border-radius: 12px; font-size: 13px; text-align: center; margin-bottom: 20px; font-weight: 600; }
-        footer { background: #11221c; text-align: center; padding: 35px 20px; color: #a4b3ad; font-size: 13px; }
-        .social-links { display: flex; justify-content: center; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
-        .social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; }
-        .social-icon:hover { background: var(--gold); transform: translateY(-3px); }
-        .whatsapp-btn { position: fixed; bottom: 20px; left: 20px; background: #25D366; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; text-decoration: none; transition: all 0.3s; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
-        .whatsapp-btn:hover { transform: scale(1.1); }
-    </style>
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-slogan { font-size: 1.3rem; }
+      .focus-grid:hover .focus-item { opacity: 1; transform: none; filter: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-content">
-            <div class="header-logo-area">
-                <img src="/sheear.png" alt="شعار الأكاديمية">
-                <h1>أكاديمية جوهر الإتقان</h1>
-            </div>
+  <!-- 1. Header & Dynamic Logo -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo-container">
+        <div class="logo-gem"><i class="fa-solid fa-gem"></i></div>
+        <div class="logo-text">
+          <h2>أكاديمية جوهر الإتقان</h2>
+          <span>إتقان الجوهر.. سموٌ بالمظهر</span>
         </div>
-    </header>
+      </a>
 
-    <section class="hero">
-        <div class="hero-content">
-            <img src="/sheear.png" class="hero-logo" alt="شعار الأكاديمية">
-            <h1>أكاديمية جوهر الإتقان</h1>
-            <p>إتقان الجوهر... سمو بالمظهر</p>
-            <div class="hero-target">✨ للنساء، الفتيات، والأشبال حتى سن 14 عاماً ✨</div>
-            <div>
-                <a href="#register" class="btn">الانضمام للمعسكرات الصيفية</a>
-            </div>
+      <ul class="nav-menu">
+        <li><a href="#identity">الهوية</a></li>
+        <li><a href="#team">الهيكل والإدارة</a></li>
+        <li><a href="#courses">الدورات</a></li>
+        <li><a href="#volunteer">التطوع والانضمام</a></li>
+        <li><a href="#contact">التواصل والصفحات</a></li>
+      </ul>
+
+      <span class="est-tag"><i class="fa-solid fa-shield-halved"></i> تأسست 2025 م</span>
+    </div>
+  </header>
+
+  <!-- 2. News Ticker -->
+  <div class="news-ticker">
+    <div class="ticker-title"><i class="fa-solid fa-bell"></i> إعلانات الأكاديمية:</div>
+    <div class="ticker-content">
+      <span>✨ مرحباً بكم في المنصة الرسمية لأكاديمية جوهر الإتقان (تأسست 2025م)</span>
+      <span>📖 التسجيل مفتوح الآن في الدورات المباشرة والمسجلة بالحفظ والإجازة</span>
+      <span>🤝 باب التطوع مفتوح الآن للمعلمات والتيمات الإدارية للانضمام لخيريّة العمل</span>
+    </div>
+  </div>
+
+  <!-- 3. Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-slogan" data-aos="zoom-in">"إتقان الجوهر.. سموٌ بالمظهر"</div>
+      <h1 data-aos="fade-up" data-aos-delay="100">المنصة التعليمية والتربوية العالمية المتكاملة</h1>
+      <p style="font-size:1.2rem; opacity:0.9; max-width:800px; margin:auto;" data-aos="fade-up" data-aos-delay="200">
+        نحو بناء جيل مسلم فريد يرتكز على عقيدة التوحيد والأخلاق المتميزة عبر أحدث أساليب التكنولوجيا والتعليم النقي.
+      </p>
+      <div class="pure-env-card" data-aos="flip-up" data-aos-delay="300">
+        <i class="fa-solid fa-volume-xmark"></i> بيئة تربوية تفاعلية خالية تماماً من الموسيقى والمؤثرات الصوتية
+      </div>
+    </div>
+  </section>
+  <!-- قسم نشيد الأكاديمية الرسمي -->
+<div class="nasheed-box" data-aos="zoom-in" data-aos-delay="300">
+  <div class="nasheed-header">
+    <i class="fa-solid fa-music nasheed-icon"></i>
+    <div>
+      <h4>النشيد الرسمي لأكاديمية جوهر الإتقان</h4>
+      <span>«إتقان الجوهر.. سمو بالمظهر»</span>
+    </div>
+  </div>
+  
+  <video controls controlsList="nodownload" class="nasheed-player" poster="https://www.transparenttextures.com/patterns/islamic-art.png">
+    <source src="nasheed.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل هذا النشيد.
+  </video>
+</div>
+
+
+
+  <!-- 4. Team Section -->
+  <section class="container sec-padding" id="team">
+    <div class="sec-title-box" data-aos="fade-up">
+      <h2>👥 القيادة والهيكل الإداري</h2>
+      <p>فريق متكامل يعمل على رعاية العلم والمشتركين بأعلى معايير الإتقان</p>
+      <div class="gold-divider"></div>
+    </div>
+
+    <div class="focus-grid">
+      <div class="focus-item team-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-avatar-box"><i class="fa-solid fa-user-gear"></i></div>
+        <h3>أ. هاجر خيري</h3>
+        <p class="role">مؤسسة الأكاديمية</p>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">صاحبة الرؤية والقيادة الاستراتيجية لبناء الأكاديمية وتطوير مساراتها العلمية.</p>
+      </div>
+
+      <div class="focus-item team-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-avatar-box"><i class="fa-solid fa-user-graduate"></i></div>
+        <h3>د. عليا محيي</h3>
+        <p class="role">مديرة الدورات الأكاديمية</p>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">المشرفة العامة على الجودة العلمية، المناهج، وتنظيم الجداول والتسميع المباشر.</p>
+      </div>
+
+      <div class="focus-item team-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-avatar-box"><i class="fa-solid fa-clipboard-user"></i></div>
+        <h3>أمنية & إمامة حسن</h3>
+        <p class="role">إداريات الأكاديمية</p>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">المتابعة التنفيذية الفعالة، إدارة القنوات، ودعم الطلاب والرد على التساؤلات.</p>
+      </div>
+
+      <div class="focus-item team-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-avatar-box"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3>كادر المعلمات والواعظات</h3>
+        <p class="role">النخبة التعليمية</p>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">مجموعة تم اختيارها بعناية فائقة من ذوات الخبرة والكفاءة في الإقراء والتزكية.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Detailed Courses Section -->
+  <section class="container sec-padding" id="courses" style="padding-top:0;">
+    <div class="sec-title-box" data-aos="fade-up">
+      <h2>📚 البرامج والدورات الأكاديمية المفصلة</h2>
+      <p>مسارات علمية مخصصة تجمع بين الأصالة والسهولة مع نظام متابعة دقيق</p>
+      <div class="gold-divider"></div>
+    </div>
+
+    <h3 style="color:var(--primary); margin-bottom:20px; font-size:1.5rem;" data-aos="fade-right">
+      <i class="fa-solid fa-headset" style="color:var(--gold);"></i> أولاً: الدورات المباشرة (بالإجازة بالسند)
+    </h3>
+
+    <div class="focus-grid">
+      <div class="focus-item course-card" data-aos="fade-up">
+        <span class="course-badge">مباشر + إجازة</span>
+        <h3>تحفة الأطفال</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">دورة أصول علم التجويد وتصحيح التلاوة للمبتدئين والناشئة.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> شرح أحكام النون والميد والأحكام الأساسية</li>
+          <li><i class="fa-solid fa-check-circle"></i> تسميع مباشر ومتابعة فردية مع المعلمة</li>
+          <li><i class="fa-solid fa-check-circle"></i> منح شهادة إجازة بعد التسميع المتقن</li>
+        </ul>
+      </div>
+
+      <div class="focus-item course-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="course-badge">مباشر + إجازة</span>
+        <h3>المنظومة الإبراهيمية</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">تأصيل علمي دقيق لشرح المنظومة وتطبيق مفاهيمها.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> شرح أصول المادة وتوضيح المعاني</li>
+          <li><i class="fa-solid fa-check-circle"></i> اختبارات شفهية وتسميع دوري</li>
+          <li><i class="fa-solid fa-check-circle"></i> دعم ومتابعة عبر مجموعات الواتساب والتليجرام</li>
+        </ul>
+      </div>
+
+      <div class="focus-item course-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="course-badge">مباشر + إجازة</span>
+        <h3>القول المستطاب</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">دورة متخصصة في الأصول الأخلاقية والآداب والتربية السلوكية.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> ترسيخ مفاهيم الأخلاق الفاضلة لدى الطالب</li>
+          <li><i class="fa-solid fa-check-circle"></i> تطبيق عملي على مواقف الحياة اليومية</li>
+          <li><i class="fa-solid fa-check-circle"></i> بيئة إيمانية مشجعة للتزكية النفسية</li>
+        </ul>
+      </div>
+
+      <div class="focus-item course-card" data-aos="fade-up">
+        <span class="course-badge">مباشر + إجازة</span>
+        <h3>النائلي</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">دورة علوم القرآن الكريم وتوضيح المكي والمدني.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> بيان خصائص السور المكية والمدنية</li>
+          <li><i class="fa-solid fa-check-circle"></i> فهم أسباب النزول والسياق القرآني</li>
+          <li><i class="fa-solid fa-check-circle"></i> رفع التسجيلات على قناة المقرأة الرسمية</li>
+        </ul>
+      </div>
+
+      <div class="focus-item course-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="course-badge">مباشر + إجازة</span>
+        <h3>المنيرة في السيرة النبوية</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">دراسة مبسطة وشاملة للمهم من سيرة النبي ﷺ.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> ربط محطات السيرة بالواقع والتربية</li>
+          <li><i class="fa-solid fa-check-circle"></i> غرس محبة الرسول ﷺ في نفوس النشء</li>
+          <li><i class="fa-solid fa-check-circle"></i> إجازة في حفظ وفهم المنظومة</li>
+        </ul>
+      </div>
+
+      <div class="focus-item course-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="course-badge">مباشر + إجازة</span>
+        <h3>أمهات المؤمنين & العقيدة المرشدة</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">تأصيل عقدي إيماني ودراسة سير زوجات النبي ﷺ.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> الاقتداء بأمهات المؤمنين في السلوك والتزكية</li>
+          <li><i class="fa-solid fa-check-circle"></i> دراسة متون العقيدة الصحيحة النقية</li>
+          <li><i class="fa-solid fa-check-circle"></i> متابعة واختبارات قياس مستوى</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Recorded Courses -->
+    <h3 style="color:var(--primary); margin:40px 0 20px; font-size:1.5rem;" data-aos="fade-right">
+      <i class="fa-solid fa-video" style="color:var(--gold);"></i> ثانياً: البرامج والدبلومات المسجلة
+    </h3>
+
+    <div class="focus-grid">
+      <div class="focus-item course-card" style="border-right: 6px solid var(--gold);" data-aos="fade-up">
+        <span class="course-badge" style="background:var(--primary);">مسجل + متابعة</span>
+        <h3>دبلوم صناعة الجوهر (المستوى الأول)</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">دبلوم تأصيلي متكامل يعتمد على محاضرات كبار العلماء وشروحهم المعتمدة.</p>
+        <ul class="course-details">
+          <li><i class="fa-solid fa-check-circle"></i> تنزل المحاضرات مسجلة عبر القنوات الرسمية</li>
+          <li><i class="fa-solid fa-check-circle"></i> تفريغ نصي كامل وتلخيص محكم لكل محاضرة</li>
+          <li><i class="fa-solid fa-check-circle"></i> نظام اختبارات دورية لضمان الاستيعاب والتحصيل العلمي</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Volunteer Section (قسم الانضمام والتطوع) -->
+  <section class="container sec-padding" id="volunteer" style="padding-top:0;">
+    <div class="sec-title-box" data-aos="fade-up">
+      <h2>🤝 انضم إلى فريق الخير (باب التطوع)</h2>
+      <p>"خَيرُكُم مَن تَعَلَّمَ القُرْآنَ وعَلَّمَهُ" - شاركي بجهدك وعلمك في بناء الأجيال</p>
+      <div class="gold-divider"></div>
+    </div>
+
+    <div class="focus-grid">
+      <!-- Volunteer Teacher -->
+      <div class="focus-item" style="border-top: 5px solid var(--gold);" data-aos="fade-up">
+        <div style="text-align:center; margin-bottom:15px;">
+          <i class="fa-solid fa-chalkboard-user" style="font-size:2.5rem; color:var(--primary);"></i>
         </div>
-    </section>
+        <h3 style="text-align:center; color:var(--primary-dark); font-weight:900;">التطوع كمعلمة / مقرأة</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted); text-align:center; margin-top:8px;">
+          للمعلمات الحافظات والمجازات الراغبات في تدريس القرآن، المتون، وتصحيح التلاوة والتزكية.
+        </p>
+                <a href="https://wa.me/201000000000?text=أرغب%20في%20التطوع%20كـمعلمة%20في%20أكاديمية%20جوهر%20الإتقان" target="_blank" class="btn-action">
+          <i class="fa-brands fa-whatsapp"></i> تقديم طلب التطوع كمعلمة
+        </a>
+      </div>
 
-    <section style="background: #fff;">
-        <div class="container">
-            <div class="media-grid">
-                <div class="video-box">
-                    <h3><i class="fa-solid fa-play"></i> الفيديو التعريفي الرسمي</h3>
-                    <video controls><source src="/tareef.mp4" type="video/mp4"></video>
-                </div>
-                <div class="video-box">
-                    <h3><i class="fa-solid fa-music"></i> نشيد الأكاديمية العذب</h3>
-                    <video controls><source src="/nasheed.mp4" type="video/mp4"></video>
-                </div>
-            </div>
+      <!-- Volunteer Administrative Teams -->
+      <div class="focus-item" style="border-top: 5px solid var(--primary);" data-aos="fade-up" data-aos-delay="100">
+        <div style="text-align:center; margin-bottom:15px;">
+          <i class="fa-solid fa-users-gear" style="font-size:2.5rem; color:var(--gold);"></i>
         </div>
-    </section>
+        <h3 style="text-align:center; color:var(--primary-dark); font-weight:900;">التطوع في التيمات الإدارية</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted); text-align:center; margin-top:8px;">
+          تشمل التيمات: إدارة القنوات، تفريغ الشروحات والتصميم، المتابعة، والرد على المشتركين.
+        </p>
+        <a href="https://wa.me/201000000000?text=أرغب%20في%20التطوع%20في%20التيمات%20الإدارية%20لأكاديمية%20جوهر%20الإتقان" target="_blank" class="btn-action btn-primary-dark">
+          <i class="fa-brands fa-whatsapp"></i> الانضمام للتيم الإداري
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- 7. Social Media & Contact Section (الصفحات وأرقام التواصل) -->
+  <section class="container sec-padding" id="contact" style="padding-top:0;">
+    <div class="sec-title-box" data-aos="fade-up">
+      <h2>🌐 الصفحات الرسمية وقنوات التواصل</h2>
+      <p>تواصل معنا مباشرة عبر منصات الأكاديمية الرسمية المعتمدة</p>
+      <div class="gold-divider"></div>
+    </div>
 
-    <section class="about">
-        <div class="container">
-            <h2 class="section-title">🏛 من نحن؟</h2>
-            <p class="about-text">
-                منصة تعليمية قرآنيّة رائدة متخصصة في تجويد وحفظ كتاب الله والعلوم الشرعية والدورات المهارية. تسعى الأكاديمية لصناعة الأثر وبناء عقول متقنة واعية شرعياً وتقنياً بأساليب تفاعلية حديثة تحت إشراف نخبة من المعلمات المجازات.
-            </p>
-            <div class="stats">
-                <div class="stat"><i class="fa-solid fa-award"></i><h3>6000+</h3><p>خريجة في تحفة الأطفال</p></div>
-                <div class="stat"><i class="fa-solid fa-graduation-cap"></i><h3>+1000</h3><p>طالبة حالية</p></div>
-                <div class="stat"><i class="fa-solid fa-book-open"></i><h3>+20</h3><p>برنامجاً تعليمياً</p></div>
-                <div class="stat"><i class="fa-solid fa-chalkboard-user"></i><h3>+15</h3><p>معلمة مجازة بالسند</p></div>
-            </div>
-        </div>
-    </section>
+    <div class="focus-grid">
+      <!-- Facebook Card -->
+      <a href="https://facebook.com" target="_blank" class="focus-item social-card" data-aos="fade-up">
+        <div class="social-icon-box facebook-bg"><i class="fa-brands fa-facebook-f"></i></div>
+        <h3>صفحة الفيسبوك الرسمية</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">لمتابعة آخر الأخبار والإعلانات والمنشورات العلمية.</p>
+      </a>
 
-    <section style="background: #fff;">
-        <div class="container">
-            <h2 class="section-title">✨ لماذا تختارين أكاديميتنا؟</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fa-solid fa-certificate"></i>
-                    <h3>نجاح ومصداقية واقعية</h3>
-                    <p>أثرنا يتحدث عنا؛ حيث تفخر الأكاديمية بتخريج وإجازة أكثر من 6000 طالبة أتقنّ أحكام التجويد بالكامل عبر متن تحفة الأطفال.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-clock"></i>
-                    <h3>متابعة وتسميع يومي</h3>
-                    <p>نعتمد على بيئة تفاعلية حية تشمل ميزة التسميع اليومي مع الرفيق لضمان رسوخ الحفظ وعدم التكاسل.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <h3>خصوصية تامة وبيئة آمنة</h3>
-                    <p>بيئة إيمانية مخصصة بالكامل لراحة الفتيات والنساء، بالإضافة إلى فصول تربوية مستقلة ومحببة للأولاد الصغار.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <!-- Telegram Channel -->
+      <a href="https://t.me" target="_blank" class="focus-item social-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="social-icon-box telegram-bg"><i class="fa-paper-plane"></i></div>
+        <h3>قناة التليجرام الرئيسية</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">لنزول الصوتيات، الشروحات، وملفات الـ PDF والتفريغات.</p>
+      </a>
 
-    <section id="register" style="padding: 40px 0;">
-        <div class="container">
-            <div class="registration-section">
-                <h2>📢 ابدئي رحلة الإتقان والتميز معنا</h2>
-                <p>اضغطي على أحد الخيارات التالية لحجز مقعدكِ في معسكراتنا الصيفية فوراً</p>
-                <div class="registration-buttons">
-                    <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn"><i class="fa-solid fa-file-signature"></i> استمارة القبول عبر جوجل</a>
-                    <a href="https://t.me/DailyTajweedBot" target="_blank" class="btn"><i class="fa-solid fa-robot"></i> التسجيل التلقائي عبر البوت</a>
-                </div>
-            </div>
-        </div>
-    </section>
+      <!-- WhatsApp Direct Contact -->
+      <a href="https://wa.me/201000000000" target="_blank" class="focus-item social-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="social-icon-box whatsapp-bg"><i class="fa-brands fa-whatsapp"></i></div>
+        <h3>التواصل والواتساب الإداري</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">للاستفسارات العامة، التسجيل في الدورات، والدعم الفني.</p>
+      </a>
 
-    <section id="camps">
-        <div class="container">
-            <h2 class="section-title">👑 البرامج الشرعية والمعسكرات الصيفية</h2>
-            <div class="cards-grid" style="margin-bottom: 50px;">
-                
-                <div class="card">
-                    <h3>معسكر الجوهرات</h3>
-                    <p>بناء وتربية قرآنية متكاملة بأسعار رمزية ومناسبة للجميع:</p>
-                    <ul>
-                        <li><strong>حلقتان مباشر</strong> أسبوعياً للقاء المعلمة والشرح.</li>
-                        <li><strong>تسميع يومي</strong> مستمر مع الرفيق للتثبيت الدوري.</li>
-                        <li><strong>حلقة أصول دين</strong> متنوعة ومتجددة في كل مرة لتعزيز الوعي.</li>
-                    </ul>
-                    <div class="card-footer">
-                        <span class="price">80 جنيه شهرياً</span>
-                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
-                    </div>
-                </div>
+      <!-- Youtube Channel -->
+      <a href="https://youtube.com" target="_blank" class="focus-item social-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="social-icon-box youtube-bg"><i class="fa-brands fa-youtube"></i></div>
+        <h3>قناة اليوتيوب الرسمية</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">لمشاهدة المحاضرات والدورات المسجلة بتقنية عالية.</p>
+      </a>
+    </div>
+  </section>
 
-                <div class="card">
-                    <h3>معسكر حاملة القرآن</h3>
-                    <p>برنامج مكثف للراغبات في حيازة شرف حفظ كتاب الله كاملاً:</p>
-                    <ul>
-                        <li>خطة حفظ محكمة وممنهجة تكتمل في <strong>4 أشهر</strong> فقط.</li>
-                        <li>متابعة دقيقة وتسميع دوري صارم لضمان عدم النسيان.</li>
-                        <li>تحت إشراف مباشر من معلمات مجازات وبمجموعات تحفيزية.</li>
-                    </ul>
-                    <div class="card-footer">
-                        <span class="price">1500 جنيه</span>
-                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
-                    </div>
-                </div>
+  <!-- 8. Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Amiri', serif; font-size: 1.3rem; color: var(--gold-bright); margin-bottom: 8px;">
+        🌸 جميع الحقوق محفوظة © أكاديمية جوهر الإتقان (تأسست 2025 م) 🌸
+      </p>
+      <p style="font-size:0.85rem; opacity:0.8;">إتقان الجوهر.. سموٌ بالمظهر | نحو علمٍ نافع وعملٍ صالح</p>
+    </div>
+  </footer>
 
-                <div class="card">
-                    <h3>معسكر المتون الشرعية</h3>
-                    <p>مدارسة علمية متقنة لأهم المتون التجويدية مع توفير إجازات معتمدة بسند متصل:</p>
-                    <ul>
-                        <li><strong>متن تحفة الأطفال:</strong> الشرح مجاني (الاختبار والإجازة 30 ج).</li>
-                        <li><strong>المنظومة الإبراهيمية:</strong> الشرح مجاني (الاختبار والإجازة 20 ج).</li>
-                    </ul>
-                    <div class="card-footer">
-                        <span class="price">الدراسة مجانية</span>
-                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>معسكر السير والعلوم الشرعية</h3>
-                    <p>سلاسل إيمانية وثقافية تهدف لتعزيز الثقافة الإسلامية وتزكية الأخلاق:</p>
-                    <ul>
-                        <li><strong>سلسلة أكثر أهل النار:</strong> وقفات تربوية هامة مع أ. أم أميرة.</li>
-                        <li><strong>الأربعون النووية:</strong> مدارسة أحاديث المصطفى ﷺ وتطبيقاتها.</li>
-                        <li><strong>أمهات المؤمنين:</strong> الإبحار في السير العطرة لزوجات النبي ﷺ.</li>
-                    </ul>
-                    <div class="card-footer">
-                        <span class="price">مجاني بالكامل</span>
-                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>معسكر سحر البيان (النحو)</h3>
-                    <p>تأسيس متين ومبسط لقواعد لغة الضاد من البداية لتمكين لسان الطالب وصون قراءة القرآن الكريم.</p>
-                    <div class="card-footer">
-                        <span class="price">200 جنيه</span>
-                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>🏅 برنامج الإجازات المعتمدة</h3>
-                    <p>منح الإجازات المعتمدة بالسند المتصل إلى رسول الله ﷺ في القرآن الكريم والقراءات والمتون التجويدية.</p>
-                    <div class="card-footer">
-                        <span class="price">من 500 إلى 1000 ج</span>
-                        <a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="section-title">💻 المعسكرات المهارية والتقنية</h2>
-            <div class="phone-notice">
-                <i class="fa-solid fa-mobile-screen-button"></i> 📱 جميع المعسكرات المهارية مصممة للتطبيق عبر الهاتف المحمول بالكامل.
-            </div>
-            <div class="cards-grid">
-                <div class="card"><h3>معسكر المونتاج بالهاتف</h3><p>تعلم فنون قص وتعديل الفيديوهات الرقمية وتركيب الصوت والمؤثرات باحترافية من خلال الجوال.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
-                <div class="card"><h3>معسكر الذكاء الاصطناعي</h3><p>توظيف أدوات الـ AI الحديثة وتطبيقاتها في البحث العلمي وصناعة المحتوى المرئي والتعليمي بسهولة.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
-                <div class="card"><h3>معسكر التفريغ النصي</h3><p>احتراف تحويل الخطب والمقاطع الصوتية إلى ملفات نصية منسقة بدقة والبدء في سوق العمل الحر.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
-                <div class="card"><h3>معسكر صناعة المحتوى</h3><p>آليات التخطيط والكتابة لبناء محتوى قيمي هادف وجذاب، وإدارته ونشره على منصات التواصل بذكاء.</p><div class="card-footer"><span class="price">تواصل للاستفسار</span><a href="https://forms.gle/vUchi4qBEDMjHjZw9" target="_blank" class="btn btn-sm">اشتركي الآن</a></div></div>
-            </div>
-        </div>
-    </section>
-
-    <section style="background: var(--gold-light);">
-        <div class="container">
-            <h2 class="section-title">👩‍🏫 كادر الإشراف والتعليم</h2>
-            <div class="team-grid">
-                <div class="teacher">
-                    <div class="teacher-role"><i class="fa-solid fa-crown"></i><h3>الإدارة والمؤسس</h3></div>
-                    <p><strong>أ. هاجر خيري</strong><br>(مديرة الأكاديمية والمشرفة العامة على المنصة)</p>
-                </div>
-                <div class="teacher">
-                    <div class="teacher-role"><i class="fa-solid fa-book-quran"></i><h3>قرآن كريم وتلاوة</h3></div>
-                    <p>أ. هاجر محمد • أ. هنية إسماعيل • أ. هنا إسلام • أ. رحاب عامر • أ. ياسمين عبد الحميد • أ. رحمة صديق • أ. خديجة مقبل ردمان • أ. نتالي حفار</p>
-                </div>
-                <div class="teacher">
-                    <div class="teacher-role"><i class="fa-solid fa-book"></i><h3>المتون والعلوم الشرعية</h3></div>
-                    <p><strong>أ. هاجر خيري</strong> (تحفة الأطفال / الإبراهيمية)<br><strong>أ. منة الله صابر</strong> (النحو / السيرة)<br><strong>أ. ندى محمد</strong> (الأربعون النووية)<br><strong>أ. منى أم أميرة</strong> (سلسلة أكثر أهل النار / التدبر)</p>
-                </div>
-                <div class="teacher">
-                    <div class="teacher-role"><i class="fa-solid fa-handshake-angle"></i><h3>الدعم والإدارة والتقنية</h3></div>
-                    <p>مآب محمد • رحاب عامر (مساعدة إدارية) • بالتعاون مع فريق الدعم والتدقيق التقني بالأكاديمية.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section style="background: #fff;">
-        <div class="container">
-            <h2 class="section-title">📸 معرض الأكاديمية الفني</h2>
-            <div class="gallery-grid">
-                <img src="/halalah.png" alt="شعار الحلقات">
-                <img src="/teacher.png" alt="كادر التدريس">
-                <img src="/sheear.png" alt="الشعار الرئيسي الفخم">
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h2 class="section-title">⭐ كلمات من قلوب طالباتنا</h2>
-            <div class="reviews-grid">
-                <div class="review"><h3>أم عبد الله</h3><p>الأكاديمية بيئة مباركة وممتازة، والتدريس يتم برفق وأسلوب ميسر جزاكم الله عنا خيراً.</p></div>
-                <div class="review"><h3>فاطمة أحمد</h3><p>معسكرات الأكاديمية الصيفية ممتعة والتنظيم مريح والمتابعة اليومية أبقتني ملتزمة دائماً.</p></div>
-                <div class="review"><h3>مريم خالد</h3><p>شرح المتون واضح ودقيق جداً والمتابعة ممتازة من المعلمات، أنصح كل أخت بالانضمام فوراً.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://wa.me/201040478991" target="_blank" class="social-icon" title="واتساب الإدارة"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://whatsapp.com/channel/0029Vb83shEDOQIeLFzWgD01" target="_blank" class="social-icon" title="قناة الواتساب"><i class="fa-solid fa-bullhorn"></i></a>
-                <a href="https://t.me/jaoharoaletqan" target="_blank" class="social-icon" title="قناة التليجرام"><i class="fa-brands fa-telegram"></i></a>
-                <a href="https://t.me/DailyTajweedBot" target="_blank" class="social-icon" title="بوت التسجيل الالي"><i class="fa-solid fa-robot"></i></a>
-                <a href="https://www.facebook.com/share/1BGhfkTsYA/" target="_blank" class="social-icon" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://youtube.com/channel/UCvc7zx4xWksuyzPKJqUx25w?si=5NoCO9tVimsILC9n" target="_blank" class="social-icon" title="يوتيوب"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://www.instagram.com/hager832014?igsh=ZzMzMGJic2dxbDhq" target="_blank" class="social-icon" title="انستغرام"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@user3035176127599?_r=1&_t=ZS-97GzWcgeNhi" target="_blank" class="social-icon" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-            <p>&copy; 2026 أكاديمية جوهر الإتقان. جميع الحقوق محفوظة لبيئة العلم والهدى.</p>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/201040478991" class="whatsapp-btn" target="_blank" title="تواصل مباشر عبر الواتساب">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+  </script>
 </body>
 </html>
+
